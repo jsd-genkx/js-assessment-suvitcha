@@ -131,17 +131,44 @@
 
 ### Thinking Process
 
+Thinking Process
 1.หาว่าจะรับข้อมูล input keybroad ได้ยังไง ผมก็เอา prompt-syncไปเสริตใน google ดูว่า มันคืออะไร
+
 2.จากนั้นผมเห็นว่ามี Import เข้ามาด้วย ด้วยความสงสัยเลยไปเสริต google ดูว่า clear-screen คืออะไร
+
 3.จากนั้นผมลองเซตค่า this.positionRow = 0; กับ this.positionCol = 0; ให้เป็นค่าอื่น ได้ผลลัพท์ว่า ตัว * ย้ายตำแหน่ง ทำให้เรารู้
+
 4.รับ input เข้ามา โดยใช้คำสั่ง prompt
+
 5.เมื่อรับเข้ามาแล้วทำได้แค่ทีเดียว จะให้สามารถรับค่าได้หลายๆ ทีตามตัวอย่างทำยังไง ก็เลยไปใช้ while
+
 6.จากนั้นทำการเช็คค่าเมื่อกดตัว r แล้วเดินจากซ้ายไปขวา จากนั้นผมก็ลองใช้คำสั่ง ถ้า input 'r' เข้ามา ให้ทำการเลื่อนตำแหน่ง Index array ไป +1 แล้วลองรันดู
+
 7.ทำจากบนลงล่าง ค่า Row+1
+
 8.ทำจากขวาไปซ้าย ค่า Col-1
+
 9.ทำจากล่างขึ้นบน ค่า Row-1
+
 10.ทำการแสดงผล field ที่หน้าจอ แต่ * ยังไม่แสดงผลที่หน้าจอ
+
 11.ทำการใส่ค่า pathCharacter เพื่ออัพเดทค่า * ไปใน value ของ index นั้นๆ ก่อนที่จะแสดงผล
+
+12.ในโจทย์มีให้ Class Method moveRight moveLeft moveUp moveDown จึงไปสร้าง Method เพื่อเรียกใช้ แล้วมาเรียกใช้ใน if เดิมที่เคยทำไว้แล้ว ในข้อ 6. 7. 8. 9.
+
+13. โจทย์ให้ทำ Game Logic: Wins by finding their hat เมื่อเดินถึงจุดนี้ให้เอา index array ไปเช็ค ตัวแปร hat แล้ว return จบ เกม
+
+14.โจทย์ให้ทำ Game Logic:Loses by landing on (and falling in) a hole. เมื่อเดินถึงจุดนี้ให้เอา index array ไปเช็ค ตัวแปร hole แล้ว return จบ เกม
+
+15.โจทย์ให้ทำ Game Logic:Attempts to move "outside" the field. (Warning message when actor attempts to move outside)
+
+- ทำเงื่อนไขให้หาความยาวของ array Col เพื่อเช็คค่าถ้าค่าเกินทางด้านขวาให้  return จบ เกม
+
+- ทำเงื่อนไขให้หาความยาวของ array Row เพื่อเช็คค่าถ้าค่าเกินทางด้านล่างให้  return จบ เกม
+
+- ทำเงื่อนไขมันไม่ทะลุด้านซ้ายและด้านบน มันคือ -1 ถ้า - 1 ทั้ง row col ให้  return จบ เกม
+
+16.ทำสร้างแมพ
 
 _Notes:_<br>
 _- You can attach flowcharts, diagrams, and images as needed._<br>
