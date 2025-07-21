@@ -16,9 +16,6 @@ class Field {
 
     // Replace with your own code //
     // Set the home position at (0, 0) before the game starts
-    this.positionRow = 0; //up-down
-    this.positionCol = 0; //l-r
-    this.field[this.positionRow][this.positionCol] = pathCharacter;
     this.lenRow = this.field.length;
     this.lenCol = this.field[this.positionRow].length;
   }
@@ -39,16 +36,24 @@ class Field {
     return array;
   }
   generateHat(row, col, field = [[]]) {
-    let rowRandom = this.getRandomInt(0, row - 1);
-    let colRandom = this.getRandomInt(0, col - 1);
-    field[rowRandom][colRandom] = hat;
+    const rowRandom = this.getRandomInt(0, row - 1);
+    const colRandom = this.getRandomInt(0, col - 1);
+    field[rowRandom[0]][colRandom[0]] = hat;
+    field[rowRandom[1]][colRandom[1]] = pathCharacter;
+    this.positionRow = rowRandom[1]; //up-down
+    this.positionCol = colRandom[1];
     return field;
   }
 
   getRandomInt(min, max) {
     min = Math.ceil(min); // Ensures the minimum is an integer
     max = Math.floor(max); // Ensures the maximum is an integer
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+    const first = Math.floor(Math.random() * (max - min + 1)) + min;
+    let second;
+    do {
+      second = Math.floor(Math.random() * (max - min + 1)) + min;
+    } while (second === first);
+    return [first, second];
   }
 
   // Print field //
@@ -78,6 +83,8 @@ class Field {
         this.moveLeft();
       } else if (n === "u") {
         this.moveUp();
+      } else if (n === "q") {
+        return;
       } else {
         console.log("You must input l=left r=right u=up d=down ");
       }
